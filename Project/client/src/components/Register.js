@@ -97,7 +97,7 @@ const CreateUser = () => {
           )}
         </div>
         <div className="form-group mb-3">
-          <label>Confirm Password: </label>
+          <label>Confirm  Password: </label>
           <input
             type="password"
             name="confirmPassword"
@@ -123,6 +123,7 @@ const CreateUser = () => {
           className="btn btn-primary col-md-2"
           value="Sign up"
         ></input>
+
       </form>
     </>
   );
