@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+var uniqueValidator = require("mongoose-unique-validator");
 const bcrypt = require("bcrypt");
 
 const UserSchema = new mongoose.Schema(
@@ -13,6 +14,7 @@ const UserSchema = new mongoose.Schema(
     },
     email: {
       type: String,
+      unique: [true, "This email is already exist"],
       required: [true, "Email is required"],
       validate: {
         validator: (val) => /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(val),
@@ -36,7 +38,6 @@ UserSchema.virtual("confirmPassword")
   .set((value) => (this._confirmPassword = value));
 
 UserSchema.pre("validate", function (next) {
-
   if (this.password !== this.confirmPassword) {
     this.invalidate("confirmPassword", "Password must match confirm password");
   }
@@ -45,7 +46,7 @@ UserSchema.pre("validate", function (next) {
 });
 
 UserSchema.pre("save", function (next) {
-  console.log(this.password)
+  console.log(this.password);
   bcrypt
     .hash(this.password, 10)
     .then((hash) => {

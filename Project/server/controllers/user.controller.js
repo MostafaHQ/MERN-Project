@@ -5,20 +5,28 @@ const { secret } = require("../config/jwt");
 
 class UserController {
   register(req, res) {
-    console.log("req", req);
-    const user = new User(req.body, req.file);
+    // const firstName = req.body.firstName;
+    // const lastName = req.body.lastName;
+    // const email = req.body.email;
+    // const password = req.body.password;
+    // // const avatar = req.file.filename;
+    // const userData = {
+    //   firstName,
+    //   lastName,
+    //   email,
+    //   password,
+    //   // avatar,
+    // };
+    const user = new User(req.body);
     user
       .save()
       .then(() => {
-        // const payload = {
-        //   id: user._id,
-        // };
         res
           .cookie("usertoken", jwt.sign({ _id: user._id }, secret), {})
-
           .json({ msg: "successfully created user", user: user });
       })
-      .catch((err) => res.json(err));
+      
+      .catch((err) => res.status(400).json(err));
   }
 
   login(req, res) {
@@ -57,10 +65,12 @@ class UserController {
   }
 
   logout(req, res) {
-    res.cookie("usertoken", jwt.sign({ _id: "" }, secret),{
-      httpOnly: true,
-      maxAge: 0 
-    }).json({msg:"ok"})
+    res
+      .cookie("usertoken", jwt.sign({ _id: "" }, secret), {
+        httpOnly: true,
+        maxAge: 0,
+      })
+      .json({ msg: "ok" });
   }
 }
 

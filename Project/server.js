@@ -15,5 +15,6 @@ app.use(cookies());
 
 require("./server/config/mongoose.config");
 require("./server/routes/user.routes")(app);
+require("./server/routes/attendance.routes")(app);
 
 app.listen(port, () => console.log("listining on port", port));

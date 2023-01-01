@@ -3,23 +3,55 @@ import axios from "axios";
 import { navigate } from "@reach/router";
 
 const CreateUser = () => {
+  const [errors, setErrors] = useState([]);
+  const [avatar, setAvatar] = useState("");
+  // const [firstName, setFirstName] = useState("");
+  // const [lastName, setLastName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
   const [formInfo, setFormInfo] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
-    avatar: "", 
+    // avatar :avatar,
   });
 
-  const [errors, setErrors] = useState([]);
-
   const changehandler = (e) => {
-    console.log(e.target.name)
+    console.log(e.target.name);
     setFormInfo({ ...formInfo, [e.target.name]: e.target.value });
   };
 
+  // const register = (e) => {
+  //   e.preventDefault();
+  //   let formData = new FormData();
+  //   console.log(formData)
+  //   formData.append("lastName", lastName);
+  //   formData.append("email", email);
+  //   formData.append("password", password);
+  //   formData.append("confirmPassword", confirmPassword);
+  //   console.log(firstName);
+  //   console.log(formData);
+  //   // formData.append("avatar", avatar);
+  //   axios
+  //     .post("http://localhost:8000/api/register", {formData}, {
+  //       withCredentials: true,
+  //     })
+  //     .then((res) => {
+  //       console.log("hiiiiii");
+  //       if (res.data.errors) {
+  //         setErrors(res.data.errors);
+  //       } else {
+  //         navigate("/dashboard");
+  //       }
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+
   const register = (e) => {
+    console.log(formInfo)
     e.preventDefault();
     axios
       .post("http://localhost:8000/api/register", formInfo, {
@@ -41,7 +73,7 @@ const CreateUser = () => {
       <h1>Register Below</h1>
       <form onSubmit={register}>
         <div className="form-group mb-2">
-          <label>First Name: </label>
+          <label>First Name:</label>
           <input
             type="text"
             name="firstName"
@@ -55,7 +87,7 @@ const CreateUser = () => {
           )}
         </div>
         <div className="form-group mb-2">
-          <label>Last Name: </label>
+          <label>Last Name:</label>
           <input
             type="text"
             name="lastName"
@@ -97,7 +129,7 @@ const CreateUser = () => {
           )}
         </div>
         <div className="form-group mb-3">
-          <label>Confirm  Password: </label>
+          <label>Confirm Password: </label>
           <input
             type="password"
             name="confirmPassword"
@@ -112,18 +144,15 @@ const CreateUser = () => {
         </div>
         {/* <input
           type="file"
-          name="avavtar"
+          name="avatar"
           placeholder="avatar"
-          onChange={(e) => {
-            setAvatar(e.target.files[0]);
-          }}
+          onChange={(e)=>{ setFormInfo({ ...formInfo, [e.target.name]: e.target.files[0] }) ;console.log(formInfo.avatar)}}
         ></input> */}
         <input
           type="submit"
           className="btn btn-primary col-md-2"
           value="Sign up"
         ></input>
-
       </form>
     </>
   );
