@@ -9,6 +9,8 @@ const Login = () => {
     password: "",
   });
 
+  const [errormsg, setErrormsg] = useState(null);
+
   const changehandler = (e) => {
     setFormInfo({ ...formInfo, [e.target.name]: e.target.value });
   };
@@ -20,11 +22,11 @@ const Login = () => {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res)
-        if(res.data.msg=="success!"){
-          navigate("/dashboard")
-        }else{
-          
+        console.log(res);
+        if (res.data.msg == "success!") {
+          navigate("/dashboard");
+        } else {
+          setErrormsg(res.data.msg);
         }
       })
       .catch((err) => console.log(err));
@@ -35,6 +37,7 @@ const Login = () => {
       <Register />
       <h1>Login Below</h1>
       <form onSubmit={login}>
+        {errormsg ? <p className="text-danger">{errormsg}</p> : ""}
         <div className="form-group mb-2">
           <label>Email: </label>
           <input
@@ -43,25 +46,15 @@ const Login = () => {
             className="form-control"
             onChange={changehandler}
           />
-          {/* {errors.email ? (
-            <p className="text-danger">{errors.email.message}</p>
-          ) : (
-            ""
-          )} */}
         </div>
         <div className="form-group mb-2">
           <label>Password: </label>
           <input
             type="password"
             name="password"
-            className="form-control"
+            className="form-control" 
             onChange={changehandler}
           />
-          {/* {errors.password ? (
-            <p className="text-danger">{errors.password.message}</p>
-          ) : (
-            ""
-          )} */}
         </div>
         <input
           type="submit"

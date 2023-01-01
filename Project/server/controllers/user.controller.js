@@ -14,9 +14,7 @@ class UserController {
         //   id: user._id,
         // };
         res
-          .cookie("usertoken", jwt.sign({ _id: user._id }, secret), {
-          
-          })
+          .cookie("usertoken", jwt.sign({ _id: user._id }, secret), {})
 
           .json({ msg: "successfully created user", user: user });
       })
@@ -25,9 +23,7 @@ class UserController {
 
   login(req, res) {
     User.findOne({ email: req.body.email })
-
       .then(async (user) => {
-        console.log(req.body.password);
         if (user === null) {
           res.json({ msg: "invalid login attempt-user not found" });
         } else {
@@ -36,12 +32,9 @@ class UserController {
             .compare(req.body.password, user.password)
             .then((passwordIsValid) => {
               if (passwordIsValid) {
-                res.cookie(
-                  "usertoken",
-                  jwt
-                    .sign({ _id: user._id }, secret, { })
-                    
-                ).json({ msg: "success!" });
+                res
+                  .cookie("usertoken", jwt.sign({ _id: user._id }, secret, {}))
+                  .json({ msg: "success!" });
               } else {
                 console.log(user.password);
                 res.json({ msg: "invalid login attempt-password incorrect" });
@@ -49,11 +42,25 @@ class UserController {
             })
             .catch((err) => {
               console.log(err);
-              res.json({ msg: "invalid login attempt 2", err })
+              res.json({ msg: "invalid login attempt 2", err });
             });
         }
       })
       .catch((err) => res.json(err));
+  }
+
+  getLoggedInUser(req, res) {
+    const decodedJWT = jwt.decode(req.cookies.usertoken, { complete: true });
+    User.findById(decodedJWT.payload._id)
+      .then((user) => res.json({ user }))
+      .catch((err) => res.json(err));
+  }
+
+  logout(req, res) {
+    res.cookie("usertoken", jwt.sign({ _id: "" }, secret),{
+      httpOnly: true,
+      maxAge: 0 
+    }).json({msg:"ok"})
   }
 }
 
