@@ -29,7 +29,12 @@ const UserSchema = new mongoose.Schema(
     avatar: {
       type: String,
     },
+    role:{
+      type:Number,
+      default:1
+    }
   },
+
   { timestamps: true }
 );
 
