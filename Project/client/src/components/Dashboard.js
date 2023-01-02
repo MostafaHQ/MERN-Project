@@ -20,7 +20,7 @@ const Dashboard = (props) => {
         navigate("/");
       });
   }, []);
-
+  //logout method
   const logout = (e) => {
     axios
       .get("http://localhost:8000/api/users/logout", { withCredentials: true })
