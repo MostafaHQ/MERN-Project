@@ -22,7 +22,7 @@ class UserController {
       .save()
       .then(() => {
         res
-          .cookie("usertoken", jwt.sign({ _id: user._id }, secret), {})
+          // .cookie("usertoken", jwt.sign({ _id: user._id }, secret), {})
           .json({ msg: "successfully created user", user: user });
       })
 
@@ -73,7 +73,7 @@ class UserController {
       .json({ msg: "ok" });
   }
   getAllUsers(req, res) {
-    User.find({role:1})
+    User.find({ role: 1 })
       .then((all) => res.json(all))
       .catch((err) => res.json({ message: "Something went wrong", err }));
   }

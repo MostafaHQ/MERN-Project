@@ -4,7 +4,7 @@ import { navigate } from "@reach/router";
 
 const CreateUser = () => {
   const [errors, setErrors] = useState([]);
-  const [avatar, setAvatar] = useState("");
+  // const [avatar, setAvatar] = useState("");
   // const [firstName, setFirstName] = useState("");
   // const [lastName, setLastName] = useState("");
   // const [email, setEmail] = useState("");
@@ -51,18 +51,19 @@ const CreateUser = () => {
   // };
 
   const register = (e) => {
-    console.log(formInfo)
+    console.log(formInfo);
     e.preventDefault();
     axios
       .post("http://localhost:8000/api/register", formInfo, {
         withCredentials: true,
       })
-      .then((res) => {
+      .then((res) => { 
         console.log(res);
         if (res.data.errors) {
           setErrors(res.data.errors);
-        } else {
-          navigate("/dashboard");
+          // } else {
+          //   navigate("/dashboard");
+          // }
         }
       })
       .catch((err) => console.log(err));
