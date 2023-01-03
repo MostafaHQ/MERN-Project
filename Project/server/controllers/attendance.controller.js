@@ -1,5 +1,6 @@
 const Attendance = require("../models/attendance.model");
 const express = require("express");
+const { response } = require("express");
 
 module.exports.createAttendance = (request, response) => {
   Attendance.create(request.body)
@@ -30,3 +31,7 @@ module.exports.findAttendancesBelongingToUser = (request, response) => {
     .then((allAttendances) => response.json(allAttendances))
     .catch((err) => response.json(err));
 };
+
+// module.exports.updateAttendance = (request, response) => {
+//   Attendance.findOneAndUpdate
+// }

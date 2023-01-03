@@ -77,6 +77,15 @@ class UserController {
       .then((all) => res.json(all))
       .catch((err) => res.json({ message: "Something went wrong", err }));
   }
+
+  updateUser(req, res) {
+    User.findOneAndUpdate({ _id: request.params.id }, request.body, {
+      new: true,
+      runValidators: true,
+    })
+      .then((updateUser) => res.json(updateUser))
+      .catch((err) => response.status(400).json(err));
+  }
 }
 
 module.exports = new UserController();
