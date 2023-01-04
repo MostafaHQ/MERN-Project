@@ -1,5 +1,5 @@
 # Axsos Point
->Mangament system for tracking students' progress and attendance.
+>Mangament system for tracking students' progress and attendance to gather academic staff and students to accelaret the learning and logistics proccess.
 
 ## Table of Contents
 * [General Info](#our-mission)
@@ -19,6 +19,7 @@
 - Express JS
 - Node.js
 - Socket.io 
+- Face API JS
 
 ## Features:
 
@@ -26,15 +27,18 @@
 In order for the clients  to use the platform they must register/ login first,
 there are backend validations for the login/registration.and there are two roles for user one for the admin (academy staff) and the other for user. 
 
-2- After login as admin will show dashboard wich is contain attendance information for all students. and as a student will show ..........
+2- After login as admin will show dashboard wich is contain attendance information for all students. also, the registration is made only by the admin for the sudents.
+on the other hand, the admin can track the assigments and the attendece for the students.
+and as a student will see their track
 
-3- And to take attendance as student they will click on "Take attendance" and it will render a component contain live camera 
+3- And to take attendance as student will click on "Take attendance" and it will render a component contains live camera and save attendence according to the face recognition. 
 
 ## Pages
 
 ![login](https://github.com/MostafaHQ/MERN-Project/blob/master/images/HomePage.PNG)
-
-
+![registeration](https://github.com/MostafaHQ/MERN-Project/blob/master/images/Registration.PNG)
+![dashboared](https://github.com/MostafaHQ/MERN-Project/blob/master/images/Dashboard.PNG)
+![notification](https://github.com/MostafaHQ/MERN-Project/blob/master/images/AnnouncmentsForStudents.PNG)
 
 ## Room-for-improvement
 To do:
