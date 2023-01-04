@@ -26,12 +26,13 @@
 In order for the clients  to use the platform they must register/ login first,
 there are backend validations for the login/registration.and there are two roles for user one for the admin (academy staff) and the other for user. 
 
-2- 
+2- After login as admin will show dashboard wich is contain attendance information for all students. and as a student will show ..........
+
+3- And to take attendance as student they will click on "Take attendance" and it will render a component contain live camera 
 
 ## Pages
 
 ![login](https://github.com/MostafaHQ/MERN-Project/blob/master/images/HomePage.PNG)
-
 
 
 
