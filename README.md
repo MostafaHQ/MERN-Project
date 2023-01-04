@@ -30,7 +30,7 @@ there are backend validations for the login/registration.and there are two roles
 
 ## Pages
 
-![login](https://github.com/MostafaHQ/MERN-Project/blob/master/images/HomePage.PNG))
+![login](https://github.com/MostafaHQ/MERN-Project/blob/master/images/HomePage.PNG)
 
 
 
