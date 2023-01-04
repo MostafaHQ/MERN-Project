@@ -33,6 +33,10 @@ there are backend validations for the login/registration.and there are two roles
 ![login](http://github.com/)
 
 ## Room-for-improvement
+To do:
+-Allow admin to add assignments and track the student's progress 
+-Send warning and formal dismisses according to progress and attendance by using specifc craiteria determaind by admin and socket.io
+-Allow chat between students and admin
 
 ## Members
 -Dana Alhaji
