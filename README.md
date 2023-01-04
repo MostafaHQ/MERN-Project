@@ -14,11 +14,34 @@
 **Axsos Point** is website that saves time and effort for AXSOS Academy staff by enabling each student to
 
 ## Technologies Used
--React
--MongoDB
--Express JS
--Node.js
--Socket.io 
+- React
+- MongoDB
+- Express JS
+- Node.js
+- Socket.io 
 
-##Features:
+## Features:
+
+1- login and registration
+In order for the clients  to use the platform they must register/ login first,
+there are backend validations for the login/registration.and there are two roles for user one for the admin (academy staff) and the other for user. 
+
+2- 
+
+## Pages
+
+## Room-for-improvement
+
+## Members
+-Dana Alhaji
+-Bara'a abu-asal
+-Mostafa Al-Haj Qasem
+
+## Contact
+## Emails: 
+-
+
+
+
+
 
