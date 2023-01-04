@@ -3,6 +3,8 @@ const cors = require("cors");
 const cookies = require("cookie-parser");
 const port = 8000;
 const app = express();
+app.use(express.static("uploads"))
+
 app.use(
   cors({
     credentials: true,
@@ -11,11 +13,13 @@ app.use(
 );
 app.use(express.json());
 app.use(cookies());
-// app.use("./server/uploads", express.static("middleware")); // tells server where to search images from
+app.use("/uploads", express.static("middleware")); // tells server where to search images from
 
 require("./server/config/mongoose.config");
 require("./server/routes/user.routes")(app);
 require("./server/routes/attendance.routes")(app);
+require("./server/routes/photo.routes")(app);
+
 
 const server = app.listen(port, () => console.log("listining on port", port));
 

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { navigate } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import io from "socket.io-client";
+import DeleteButton from "./DeleteButton";
 
 const Dashboard = (props) => {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -56,6 +57,10 @@ const Dashboard = (props) => {
       });
   };
 
+  const removeFromDom = (userId) => {
+    setallUsers(allUsers.filter((user) => user._id !== userId));
+  };
+
   // const takeAttendance=
 
   return (
@@ -91,8 +96,11 @@ const Dashboard = (props) => {
                   return (
                     <div>
                       <li key={key}>{user.firstName}</li>
-                      {/* <input type="/> */}
                       <button>Take attendance</button>
+                      <DeleteButton
+                        userId={user._id}
+                        successCallBack={() => removeFromDom(user._id)}
+                      />
                     </div>
                   );
                 })}
@@ -105,6 +113,7 @@ const Dashboard = (props) => {
       ) : (
         <h1>Please log in first</h1>
       )}
+      <Link to="/addavatar">a,imuinuy</Link>
     </div>
   );
 };

@@ -22,10 +22,9 @@ class UserController {
       .save()
       .then(() => {
         res
-          // .cookie("usertoken", jwt.sign({ _id: user._id }, secret), {})
+          .cookie("addedUser", jwt.sign({ _id: user._id }, secret), {})
           .json({ msg: "successfully created user", user: user });
       })
-
       .catch((err) => res.status(400).json(err));
   }
 
@@ -64,6 +63,16 @@ class UserController {
       .catch((err) => res.json(err));
   }
 
+  getRegisteredUser(req, res) {
+    const decodedJWT = jwt.decode(req.cookies.addedUser, { complete: true });
+    User.findById(decodedJWT.payload._id)
+      .then((addedUser) => {
+        console.log("addedUser", addedUser);
+        res.json({ addedUser });
+      })
+      .catch((err) => res.json(err));
+  }
+
   logout(req, res) {
     res
       .cookie("usertoken", jwt.sign({ _id: "" }, secret), {
@@ -85,6 +94,12 @@ class UserController {
     })
       .then((updateUser) => res.json(updateUser))
       .catch((err) => response.status(400).json(err));
+  }
+
+  deleteUser(req, res) {
+    User.findOneAndDelete({ _id: req.params.id })
+      .then((deleteConfirmation) => res.json(deleteConfirmation))
+      .catch((err) => res.json(err));
   }
 }
 

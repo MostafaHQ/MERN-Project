@@ -57,13 +57,13 @@ const CreateUser = () => {
       .post("http://localhost:8000/api/register", formInfo, {
         withCredentials: true,
       })
-      .then((res) => { 
+      .then((res) => {
         console.log(res);
         if (res.data.errors) {
+          console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
           setErrors(res.data.errors);
-          // } else {
-          //   navigate("/dashboard");
-          // }
+        } else {
+          navigate("/addavatar");
         }
       })
       .catch((err) => console.log(err));
@@ -143,16 +143,11 @@ const CreateUser = () => {
             ""
           )}
         </div>
-        {/* <input
-          type="file"
-          name="avatar"
-          placeholder="avatar"
-          onChange={(e)=>{ setFormInfo({ ...formInfo, [e.target.name]: e.target.files[0] }) ;console.log(formInfo.avatar)}}
-        ></input> */}
+        
         <input
           type="submit"
           className="btn btn-primary col-md-2"
-          value="Sign up"
+          value="Next"
         ></input>
       </form>
     </>
