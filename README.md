@@ -35,7 +35,7 @@ there are backend validations for the login/registration.and there are two roles
 ## Room-for-improvement
 
 ## Members
--Dana Alhaji
+*Dana Alhaji
 -Bara'a abu-asal
 -Mostafa Al-Haj Qasem
 
