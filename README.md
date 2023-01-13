@@ -11,7 +11,7 @@
 * [Contact](#contact)
 
 ## Our mission and vision:
-**Axsos Point** is website that saves time and effort for AXSOS Academy staff by enabling each student to
+**Axsos Point** is website that saves time and effort for AXSOS Academy staff and students by enabling each student to take their own attendece through face recognition system also allow the academiv staff to send announcemts and track attendence and assgiments
 
 ## Technologies Used
 - React
